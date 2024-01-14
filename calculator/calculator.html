@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        #calculator {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 300px;
+        }
+
+        #display {
+            font-size: 24px;
+            margin-bottom: 10px;
+            width: 100%;
+            text-align: right;
+        }
+
+        .btn {
+            font-size: 18px;
+            width: 50px;
+            height: 50px;
+            margin: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #f0f0f0;
+        }
+
+        .btn.operator {
+            background-color: #ff9500;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+<div id="calculator">
+    <div id="display"></div>
+    <div>
+        <button class="btn" onclick="clearDisplay()">C</button>
+        <button class="btn" onclick="appendSymbol('/')">/</button>
+        <button class="btn" onclick="appendSymbol('*')">*</button>
+        <button class="btn operator" onclick="calculate()">=</button>
+    </div>
+    <div>
+        <button class="btn" onclick="appendDigit('7')">7</button>
+        <button class="btn" onclick="appendDigit('8')">8</button>
+        <button class="btn" onclick="appendDigit('9')">9</button>
+        <button class="btn" onclick="appendSymbol('-')">-</button>
+    </div>
+    <div>
+        <button class="btn" onclick="appendDigit('4')">4</button>
+        <button class="btn" onclick="appendDigit('5')">5</button>
+        <button class="btn" onclick="appendDigit('6')">6</button>
+        <button class="btn" onclick="appendSymbol('+')">+</button>
+    </div>
+    <div>
+        <button class="btn" onclick="appendDigit('1')">1</button>
+        <button class="btn" onclick="appendDigit('2')">2</button>
+        <button class="btn" onclick="appendDigit('3')">3</button>
+        <button class="btn" onclick="appendSymbol('.')">.</button>
+    </div>
+    <div>
+        <button class="btn" onclick="appendDigit('0')">0</button>
+        <!-- Add more buttons for additional functionality if needed -->
+    </div>
+</div>
+
+<script>
+    let display = document.getElementById('display');
+    let currentInput = '';
+
+    function clearDisplay() {
+        currentInput = '';
+        updateDisplay();
+    }
+
+    function appendDigit(digit) {
+        currentInput += digit;
+        updateDisplay();
+    }
+
+    function appendSymbol(symbol) {
+        currentInput += symbol;
+        updateDisplay();
+    }
+
+    function calculate() {
+        try {
+            currentInput = eval(currentInput).toString();
+            updateDisplay();
+        } catch (error) {
+            currentInput = 'Error';
+            updateDisplay();
+        }
+    }
+
+    function updateDisplay() {
+        display.innerText = currentInput;
+    }
+</script>
+
+</body>
+</html>
