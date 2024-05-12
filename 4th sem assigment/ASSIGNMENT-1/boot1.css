@@ -1,0 +1,27 @@
+/* everything */
+.everything{
+    background-color: black;
+    color: black;
+}
+/* the header , navbar */
+.header1{
+    margin-left: 150px;
+    margin-right: 150px;
+    font-size: large;
+}
+
+/* the carosuel and product */
+.container1{
+    display:flex;
+
+}
+
+.col1{
+    /* background-color: rgb(166, 246, 219); */
+    flex:1;
+}
+
+.col-md-4{
+    color: rgba(205, 10, 10, 0.5);
+}
+
